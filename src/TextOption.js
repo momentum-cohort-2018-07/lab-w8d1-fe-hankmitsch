@@ -1,36 +1,12 @@
 import React, { Component } from 'react'
-import textOptions from './textOptions'
 
 class TextOption extends Component {
-//   constructor () {
-//     super()
-//     this.state = {
-//       option: textOptions
-//     }
-//   }
-
-  setOption (option) {
-    return (event) => {
-      const value = event.target.checked
-      console.log(value)
-      const optionSet = new Set(this.state.options)
-      if (value) {
-        optionSet.add(option)
-      } else {
-        optionSet.delete(option)
-      }
-      this.setState({
-        options: [...optionSet]
-      })
-    }
-  }
-
   render () {
-    const option = this.props
+    const option = this.props.option
     return (
       <div>
         <label htmlFor={option.id}>
-          <input type='checkbox' id={option.id} onChange={this.setOption(option.id)} /> {' ' + option.label}
+          <input type='checkbox' id={option.id} onChange={this.props.setOption} /> {' ' + option.label}
         </label>
       </div>
     )
